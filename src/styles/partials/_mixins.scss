@@ -15,3 +15,19 @@
   src: url('../../assets/fonts/AvenirNextLTPro-Bold.otf') format('opentype');
   font-weight: 700;
 }
+
+@mixin desktop {
+  @media screen and (min-width: $desktop_breakpoint) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media screen and (max-width: $mobile_breakpoint) {
+    @content;
+  }
+}
