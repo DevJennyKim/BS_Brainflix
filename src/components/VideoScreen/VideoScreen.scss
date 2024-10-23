@@ -1,0 +1,11 @@
+.hero {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  width: 100%;
+  &__video {
+    width: 72%;
+    height: 40vw;
+    background-color: black;
+  }
+}

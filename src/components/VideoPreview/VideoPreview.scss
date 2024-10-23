@@ -1,0 +1,21 @@
+.preview {
+  display: flex;
+  gap: 2rem;
+  &__img {
+    width: 45%;
+    height: auto;
+    border-radius: 6px;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    &-title {
+      font-size: 1.5rem;
+    }
+    &-author {
+      font-size: 1.3rem;
+    }
+  }
+}

@@ -1,21 +1,17 @@
 import './Header.scss';
+import logo from '../../assets/images/logo/BrainFlix-logo.svg';
+import serchIcon from '../../assets/images/icons/search.svg';
+import uploadIcon from '../../assets/images/icons/upload.svg';
+import profileImg from '../../assets/images/images/Mohan-muruge.jpg';
 
 function Header() {
   return (
     <header className="nav">
-      <div class>
-        <img
-          src="../../assets/images/logo/BrainFlix-logo.svg"
-          alt="BrainFlix-logo"
-          className="nav__logo"
-        />
+      <div className="nav__wrapper">
+        <img src={logo} alt="BrainFlix-logo" className="nav__logo" />
         <div className="nav__features">
-          <div className="nav__input-wrapper">
-            <img
-              src="../../assets/images/icons/search.svg"
-              alt="Search"
-              className="nav__input-icon"
-            />
+          <div className="nav__input">
+            <img src={serchIcon} alt="Search" className="nav__input-icon" />
             <input
               type="text"
               placeholder="Search"
@@ -24,17 +20,14 @@ function Header() {
           </div>
           <button type="button" className="nav__btn-upload">
             <img
-              src="../../assets/images/icons/upload.svg"
+              src={uploadIcon}
               alt="Upload"
-              className="nav__btn-upload-img"
+              className="nav__btn-upload-icon"
             />
             upload
           </button>
-          <img
-            src="../../assets/images/images/Mohan-muruge.jpg"
-            alt="Profile"
-            className="nav__profile"
-          />
+
+          <img src={profileImg} alt="Profile" className="nav__profile" />
         </div>
       </div>
     </header>
