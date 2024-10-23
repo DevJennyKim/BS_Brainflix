@@ -31,3 +31,30 @@
     @content;
   }
 }
+
+@mixin btn_style {
+  display: flex;
+  align-items: center;
+  width: 14rem;
+  height: 3.5rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: white;
+  background-color: $flix-blue;
+  border: none;
+  border-radius: 0.3rem;
+  &-icon {
+    margin: 0 1.5rem 0 0.2rem;
+  }
+}
+
+@mixin profile_style {
+  width: 3.7rem;
+  height: 3.7rem;
+  margin: 0 1rem;
+  border-radius: 50%;
+  overflow: hidden;
+  &-img {
+    height: 100%;
+  }
+}

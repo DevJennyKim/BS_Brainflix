@@ -4,7 +4,7 @@ import './VideoList.scss';
 function VideoList() {
   return (
     <section className="videos">
-      <h3 className="videos__title">next video</h3>
+      <h3 className="videos__title">next videos</h3>
       <div className="videos__list">
         <VideoPreview />
         <VideoPreview />

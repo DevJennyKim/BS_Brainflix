@@ -1,7 +1,11 @@
+@use '../../styles/partials/globals' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
 .videos {
-  padding: 2rem 1rem;
+  padding: 1rem 1rem;
   &__title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    color: $silver;
     text-transform: uppercase;
     padding: 2rem 0;
   }

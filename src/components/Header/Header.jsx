@@ -26,8 +26,9 @@ function Header() {
             />
             upload
           </button>
-
-          <img src={profileImg} alt="Profile" className="nav__profile" />
+          <div className="nav__profile">
+            <img src={profileImg} alt="Profile" className="nav__profile-img" />
+          </div>
         </div>
       </div>
     </header>
