@@ -1,3 +1,7 @@
+@use './styles/partials/globals' as *;
+@use './styles/partials/variables' as *;
+@use './styles/partials/mixins' as *;
+
 .bottom {
   display: flex;
   justify-content: center;
@@ -7,9 +11,9 @@
     width: 75%;
   }
   &__line {
-    width: 1px;
+    width: 2px;
     height: auto;
-    background-color: black;
+    background-color: $mercury;
   }
   &__block2 {
     width: 25%;

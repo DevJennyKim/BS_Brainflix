@@ -17,6 +17,7 @@
     align-items: flex-end;
     align-self: center;
     width: 100%;
+    gap: 1vw;
   }
   &__profile {
     @include profile_style;
@@ -25,24 +26,42 @@
     display: flex;
     flex-direction: row;
     align-items: end;
-    gap: 2rem;
+    width: 100%;
+    gap: 1vw;
   }
   &__input-label {
     display: flex;
     flex-direction: column;
     text-transform: uppercase;
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: $silver;
   }
   &__input {
-    width: 51vw;
     height: 2.9rem;
+    margin-top: 0.5rem;
+    flex-grow: 1;
+    padding-left: 1rem;
+    border: 1px solid $mercury;
+    border-radius: 5px;
+    background-color: $alabaster;
+    &:focus {
+      outline: 2px solid $flix-blue;
+    }
   }
   &__submit {
     @include btn_style;
+    margin-right: 2.5rem;
+    &-icon {
+      margin: 0 1.5rem 0 1rem;
+    }
   }
   &__line {
     width: 100%;
-    height: 1px;
-    background-color: black;
+    height: 2px;
+    background-color: $mercury;
     margin: 1rem 0;
   }
 }

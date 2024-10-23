@@ -1,6 +1,6 @@
-import './VideoScreen.scss';
+import './Hero.scss';
 
-function VideoScreen() {
+function Hero() {
   return (
     <section className="hero">
       <video
@@ -12,4 +12,4 @@ function VideoScreen() {
   );
 }
 
-export default VideoScreen;
+export default Hero;

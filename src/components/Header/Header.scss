@@ -24,7 +24,7 @@
     align-items: center;
     padding: 0 1rem;
     border: 1px solid $mercury;
-    border-radius: 0.3rem;
+    border-radius: 5px;
     background-color: $alabaster;
     &-box {
       background: none;
@@ -41,6 +41,9 @@
   }
   &__btn-upload {
     @include btn_style;
+    &-icon {
+      margin: 0 1.5rem 0 0.2rem;
+    }
   }
   &__profile {
     @include profile_style;

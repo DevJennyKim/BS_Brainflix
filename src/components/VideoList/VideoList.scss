@@ -2,12 +2,12 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/mixins' as *;
 .videos {
-  padding: 1rem 1rem;
+  padding: 3rem 2rem;
   &__title {
     font-size: 1.4rem;
     color: $silver;
     text-transform: uppercase;
-    padding: 2rem 0;
+    margin-bottom: 1.5rem;
   }
   &__list {
     display: flex;

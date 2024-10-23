@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.scss';
 import Header from './components/Header/Header';
-import VideoScreen from './components/VideoScreen/VideoScreen';
+import Hero from './components/Hero/Hero';
 import Description from './components/Description/Description';
 import VideoList from './components/VideoList/VideoList';
 import CommentsList from './components/CommentsList/CommentsList';
@@ -13,7 +13,7 @@ function App() {
     <>
       <Header />
       <main>
-        <VideoScreen />
+        <Hero />
         <div className="bottom">
           <div className="bottom__block1">
             <Description />
