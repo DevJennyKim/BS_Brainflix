@@ -8,15 +8,17 @@ import CommentsList from './components/CommentsList/CommentsList';
 import data from './data/video-details.json';
 
 function App() {
-  const [activeVideo, setActiveVideo] = useState([data[0]]);
+  const [videoContent, setVideoContent] = useState(data);
+  const [activeVideo, setActiveVideo] = useState(data[0].id);
 
   const changeActiveVideo = (id) => {
-    console.log(activeVideo); //this is id.
+    // console.log(activeVideo); //this is id.
+    // console.log(selectedVideo.comments);
     setActiveVideo(id);
   };
   //need to get the array data not just id value.
   const selectedVideo =
-    data.find((video) => video.id === activeVideo) || data[0];
+    videoContent.find((video) => video.id === activeVideo) || data[0];
 
   return (
     <>
@@ -29,12 +31,11 @@ function App() {
         <div className="bottom">
           <div className="bottom__block1">
             <Description video={selectedVideo} />
-            <CommentsList comment={selectedVideo.comments} />
+            <CommentsList comments={selectedVideo.comments} />
           </div>
-          <div className="bottom__line"></div>
           <div className="bottom__block2">
             <VideoList
-              data={data}
+              data={videoContent}
               activeVideo={activeVideo}
               changeActiveVideo={changeActiveVideo}
             />

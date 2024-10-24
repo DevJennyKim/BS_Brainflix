@@ -1,13 +1,16 @@
 .videos__item {
   display: flex;
   gap: 2rem;
+  margin-bottom: 2.5rem;
+  cursor: pointer;
   &--active {
     display: none;
   }
   &-img {
-    width: 15rem;
-    height: auto;
+    width: 14rem;
+    height: 8rem;
     border-radius: 6px;
+    object-fit: cover;
   }
   &-info {
     display: flex;
@@ -16,9 +19,10 @@
     padding: 0.5rem 0;
   }
   &-title {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    font-weight: 600;
   }
   &-author {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 }

@@ -9,6 +9,7 @@
   gap: 0.3rem;
   &__title {
     margin: 2rem 0;
+    font-size: 1.5rem;
   }
   &__wrapper {
     display: flex;
@@ -17,7 +18,8 @@
     align-items: flex-end;
     align-self: center;
     width: 100%;
-    gap: 1vw;
+    padding-bottom: 2.5rem;
+    gap: 1rem;
   }
   &__profile {
     @include profile_style;
@@ -40,19 +42,24 @@
     color: $silver;
   }
   &__input {
-    height: 2.9rem;
+    height: 4.2rem;
     margin-top: 0.5rem;
     flex-grow: 1;
-    padding-left: 1rem;
+    padding-left: 2rem;
     border: 1px solid $mercury;
     border-radius: 5px;
     background-color: $alabaster;
+    &::placeholder {
+      font-size: 1.5rem;
+      color: black;
+    }
     &:focus {
       outline: 2px solid $flix-blue;
     }
   }
   &__submit {
     @include btn_style;
+    width: 17rem;
     margin-right: 2.5rem;
     &-icon {
       margin: 0 1.5rem 0 1rem;

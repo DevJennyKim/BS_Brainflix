@@ -3,11 +3,10 @@ import { useState } from 'react';
 import CommentsItem from '../CommentItem/CommentsItem';
 import commentIcon from '../../assets/images/icons/add_comment.svg';
 import profileImg from '../../assets/images/images/Mohan-muruge.jpg';
-function CommentsList({}) {
-  // const [comment, setComment] = useState([data.comment]);
+function CommentsList({ comments }) {
   return (
     <section className="comments">
-      <h3 className="comments__title">3 Comments</h3>
+      <h3 className="comments__title">{comments.length} Comments</h3>
       <div className="comments__wrapper">
         <div className="comments__profile">
           <img
@@ -31,9 +30,11 @@ function CommentsList({}) {
           </button>
         </form>
       </div>
-      <div className="comments__line"></div>
+
       <div className="comments__list">
-        <CommentsItem />
+        {comments.map((comment) => (
+          <CommentsItem key={comment.id} comment={comment} />
+        ))}
       </div>
     </section>
   );

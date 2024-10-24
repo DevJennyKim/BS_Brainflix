@@ -32,7 +32,7 @@ function Description({ video }) {
           </div>
         </div>
       </div>
-      <div className="description__line"></div>
+
       <p className="description__summary">{video.description}</p>
     </section>
   );

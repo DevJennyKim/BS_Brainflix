@@ -8,7 +8,9 @@ function Header() {
   return (
     <header className="nav">
       <div className="nav__wrapper">
-        <img src={logo} alt="BrainFlix-logo" className="nav__logo" />
+        <a href="../../../index.html">
+          <img src={logo} alt="BrainFlix-logo" className="nav__logo" />
+        </a>
         <div className="nav__features">
           <div className="nav__input">
             <img src={serchIcon} alt="Search" className="nav__input-icon" />
