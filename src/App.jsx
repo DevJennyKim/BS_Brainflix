@@ -8,14 +8,13 @@ import CommentsList from './components/CommentsList/CommentsList';
 import data from './data/video-details.json';
 
 function App() {
-  const [videoContent, setVideoContent] = useState(data);
-  const [activeVideo, setActiveVideo] = useState(data[0].id);
+  const [activeVideoId, setActiveVideoId] = useState(data[0].id);
 
   const changeActiveVideo = (id) => {
-    setActiveVideo(id);
+    setActiveVideoId(id);
   };
   const selectedVideo =
-    videoContent.find((video) => video.id === activeVideo) || data[0];
+    videoContent.find((video) => video.id === activeVideoId) || data[0];
 
   return (
     <>
@@ -32,8 +31,8 @@ function App() {
           </div>
           <div className="bottom__block2">
             <VideoList
-              data={videoContent}
-              activeVideo={activeVideo}
+              data={data}
+              activeVideoId={activeVideoId}
               changeActiveVideo={changeActiveVideo}
             />
           </div>

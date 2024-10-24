@@ -1,13 +1,10 @@
 import './VideoPreview.scss';
-function VideoPreview({ video, isActive, changeActiveVideo }) {
+function VideoPreview({ video, changeActiveVideo }) {
   const handleClick = () => {
     changeActiveVideo(video.id);
   };
   return (
-    <div
-      className={`videos__item ${isActive ? 'videos__item--active' : ''}`}
-      onClick={handleClick}
-    >
+    <div className="videos__item" onClick={handleClick}>
       <img src={video.image} alt={video.title} className="videos__item-img" />
       <div className="videos__item-info">
         <h3 className="videos__item-title">{video.title}</h3>
