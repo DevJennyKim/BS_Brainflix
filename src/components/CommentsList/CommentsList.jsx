@@ -1,8 +1,10 @@
 import './CommentsList.scss';
+import { useState } from 'react';
 import CommentsItem from '../CommentItem/CommentsItem';
 import commentIcon from '../../assets/images/icons/add_comment.svg';
 import profileImg from '../../assets/images/images/Mohan-muruge.jpg';
-function CommentsList() {
+function CommentsList({}) {
+  // const [comment, setComment] = useState([data.comment]);
   return (
     <section className="comments">
       <h3 className="comments__title">3 Comments</h3>
@@ -31,7 +33,6 @@ function CommentsList() {
       </div>
       <div className="comments__line"></div>
       <div className="comments__list">
-        <CommentsItem />
         <CommentsItem />
       </div>
     </section>

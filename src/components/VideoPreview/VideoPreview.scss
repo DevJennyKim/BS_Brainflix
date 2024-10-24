@@ -1,8 +1,11 @@
 .videos__item {
   display: flex;
   gap: 2rem;
+  &--active {
+    display: none;
+  }
   &-img {
-    width: 45%;
+    width: 15rem;
     height: auto;
     border-radius: 6px;
   }

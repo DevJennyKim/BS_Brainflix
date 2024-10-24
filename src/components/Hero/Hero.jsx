@@ -1,12 +1,13 @@
 import './Hero.scss';
 
-function Hero() {
+function Hero({ videoUrl, posterImage }) {
   return (
     <section className="hero">
       <video
         className="hero__video"
         controls
-        poster="https://unit-3-project-api-0a5620414506.herokuapp.com/images/image0.jpg"
+        poster={posterImage}
+        src={videoUrl}
       ></video>
     </section>
   );
