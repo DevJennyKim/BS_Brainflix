@@ -12,11 +12,8 @@ function App() {
   const [activeVideo, setActiveVideo] = useState(data[0].id);
 
   const changeActiveVideo = (id) => {
-    // console.log(activeVideo); //this is id.
-    // console.log(selectedVideo.comments);
     setActiveVideo(id);
   };
-  //need to get the array data not just id value.
   const selectedVideo =
     videoContent.find((video) => video.id === activeVideo) || data[0];
 

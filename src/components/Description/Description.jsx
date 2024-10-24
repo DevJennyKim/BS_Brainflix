@@ -32,7 +32,6 @@ function Description({ video }) {
           </div>
         </div>
       </div>
-
       <p className="description__summary">{video.description}</p>
     </section>
   );
