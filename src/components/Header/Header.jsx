@@ -12,13 +12,22 @@ function Header() {
           <img src={logo} alt="BrainFlix-logo" className="nav__logo" />
         </a>
         <div className="nav__features">
-          <div className="nav__input">
-            <img src={serchIcon} alt="Search" className="nav__input-icon" />
-            <input
-              type="text"
-              placeholder="Search"
-              className="nav__input-box"
-            />
+          <div className="nav__input-container">
+            <div className="nav__input">
+              <img src={serchIcon} alt="Search" className="nav__input-icon" />
+              <input
+                type="text"
+                placeholder="Search"
+                className="nav__input-field"
+              />
+            </div>
+            <div className="nav__profile nav__profile--mobile">
+              <img
+                src={profileImg}
+                alt="Profile"
+                className="nav__profile-img"
+              />
+            </div>
           </div>
           <button type="button" className="nav__btn-upload">
             <img
@@ -28,7 +37,7 @@ function Header() {
             />
             upload
           </button>
-          <div className="nav__profile">
+          <div className="nav__profile nav__profile--desktop">
             <img src={profileImg} alt="Profile" className="nav__profile-img" />
           </div>
         </div>

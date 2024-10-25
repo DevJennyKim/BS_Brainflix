@@ -14,7 +14,7 @@ function App() {
     setActiveVideoId(id);
   };
   const selectedVideo =
-    videoContent.find((video) => video.id === activeVideoId) || data[0];
+    data.find((video) => video.id === activeVideoId) || data[0];
 
   return (
     <>

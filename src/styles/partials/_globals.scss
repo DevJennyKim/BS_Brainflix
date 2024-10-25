@@ -7,6 +7,12 @@ html {
   width: 100%;
   height: auto;
   box-sizing: border-box;
+  @include tablet {
+    font-size: 60%;
+  }
+  @include mobile {
+    font-size: 57%;
+  }
 }
 
 body {

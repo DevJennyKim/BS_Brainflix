@@ -10,20 +10,18 @@
   &__title {
     width: 100%;
     font-size: 4rem;
-    margin-bottom: 1.5rem;
   }
   &__details {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding-bottom: 1rem;
+    padding: 2rem 0;
     border-bottom: 2px solid $mercury;
   }
   &__info {
     display: flex;
     align-items: flex-end;
-
     gap: 3.5rem;
     &-author {
       font-size: 1.7rem;
@@ -58,5 +56,22 @@
     font-size: 1.5rem;
     line-height: 25px;
     margin: 2rem 0;
+  }
+  @include mobile {
+    &__title {
+      padding-bottom: 2rem;
+      border-bottom: 2px solid $mercury;
+      font-size: 3rem;
+    }
+    &__info {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+    &__count {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2rem;
+    }
   }
 }

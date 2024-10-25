@@ -16,18 +16,20 @@ function CommentsList({ comments }) {
           />
         </div>
 
-        <form className="comments__form">
-          <label htmlFor="" className="comments__input-label">
+        <form className="comments__form" id="commentForm">
+          <label className="comments__input-label">
             join the conversation
-            <input
+            <textarea
               type="text"
-              name="comment"
-              id="comment"
+              name="comments"
+              id="comments"
               placeholder="Add a new comment"
               className="comments__input"
-            />
+              cols="30"
+              rows="5"
+            ></textarea>
           </label>
-          <button type="submit" className="comments__submit">
+          <button type="submit" className="comments__submit" id="commentsBtn">
             <img src={commentIcon} alt="" className="comments__submit-icon" />
             comment
           </button>

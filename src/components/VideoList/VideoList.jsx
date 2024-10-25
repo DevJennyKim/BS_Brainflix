@@ -7,7 +7,7 @@ function VideoList({ data, activeVideoId, changeActiveVideo }) {
       <h3 className="videos__title">next videos</h3>
       <div className="videos__list">
         {data
-          .filter((video) => video.id !== activeVideoId) //call the video list except the active(which is on hero now)video
+          .filter((video) => video.id !== activeVideoId)
           .map((video) => (
             <VideoPreview
               key={video.id}

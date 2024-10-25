@@ -33,7 +33,7 @@
     border: 1px solid $mercury;
     border-radius: 5px;
     background-color: $alabaster;
-    &-box {
+    &-field {
       background: none;
       outline: none;
       border: none;
@@ -56,5 +56,63 @@
   }
   &__profile {
     @include profile_style;
+    &--mobile {
+      display: none;
+    }
+  }
+  @include tablet {
+    &__wrapper {
+      width: 90%;
+    }
+    &__features {
+      gap: 1.5rem;
+    }
+  }
+  @include mobile {
+    height: 15.5rem;
+    padding: 2rem 0;
+
+    &__wrapper {
+      flex-direction: column;
+      width: 90%;
+    }
+    &__profile {
+      &--mobile {
+        display: block;
+        margin-left: 1rem;
+        margin-right: 0;
+      }
+      &--desktop {
+        display: none;
+      }
+    }
+    &__features {
+      flex-direction: column;
+      width: 100%;
+      gap: 1.5rem;
+    }
+    &__input-container {
+      display: flex;
+      flex-direction: row;
+      flex-grow: 1;
+      width: 100%;
+    }
+    &__input {
+      width: 86%;
+      &--field {
+        width: 100%;
+      }
+    }
+    &__btn-upload {
+      justify-content: space-between;
+      width: 100%;
+      &-icon {
+        flex: 0 0 auto;
+      }
+      &::after {
+        content: '';
+        flex-grow: 0.1;
+      }
+    }
   }
 }
