@@ -1,6 +1,6 @@
 import './CommentsItem.scss';
 
-function CommentsItem({ comment }) {
+function CommentsItem({ comment, timeStamp }) {
   return (
     <>
       <div className="comments__item">
@@ -9,7 +9,7 @@ function CommentsItem({ comment }) {
           <div className="comments__author-wrapper">
             <h4 className="comments__author">{comment.name}</h4>
             <p className="comments__date">
-              {new Date(comment.timestamp).toLocaleDateString()}
+              {timeStamp(new Date(comment.timestamp).toLocaleDateString())}
             </p>
           </div>
           <p className="comments__text">{comment.comment}</p>
