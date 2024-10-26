@@ -1,8 +1,8 @@
 import './CommentsList.scss';
 
 import CommentsItem from '../CommentItem/CommentsItem';
-import commentIcon from '../../assets/images/icons/add_comment.svg';
-import profileImg from '../../assets/images/images/Mohan-muruge.jpg';
+import commentIcon from '../../assets/icons/add_comment.svg';
+import profileImg from '../../assets/images/Mohan-muruge.jpg';
 function CommentsList({ comments, timeStamp }) {
   return (
     <section className="comments">

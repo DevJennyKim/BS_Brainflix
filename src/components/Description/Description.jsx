@@ -1,6 +1,6 @@
 import './Description.scss';
-import viewIcons from '../../assets/images/icons/views.svg';
-import likeIcons from '../../assets/images/icons/likes.svg';
+import viewIcons from '../../assets/icons/views.svg';
+import likeIcons from '../../assets/icons/likes.svg';
 
 function Description({ video, timeStamp }) {
   return (

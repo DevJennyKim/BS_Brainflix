@@ -1,8 +1,8 @@
 import './Header.scss';
-import logo from '../../assets/images/logo/BrainFlix-logo.svg';
-import serchIcon from '../../assets/images/icons/search.svg';
-import uploadIcon from '../../assets/images/icons/upload.svg';
-import profileImg from '../../assets/images/images/Mohan-muruge.jpg';
+import logo from '../../assets/logo/BrainFlix-logo.svg';
+import serchIcon from '../../assets/icons/search.svg';
+import uploadIcon from '../../assets/icons/upload.svg';
+import profileImg from '../../assets/images/Mohan-muruge.jpg';
 
 function Header() {
   return (
