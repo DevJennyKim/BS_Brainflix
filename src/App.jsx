@@ -19,7 +19,7 @@ function App() {
 
   const useTimeStamp = (timeStamp) => {
     const currentDate = new Date();
-    const [timeAgo, setTimeAgo] = useState('');
+
     const sec = Math.floor((currentDate - timeStamp) / 1000);
     const min = Math.floor(sec / 60);
     const hours = Math.floor(min / 60);
@@ -44,7 +44,6 @@ function App() {
       return `just now`;
     }
   };
-
   return (
     <>
       <Header />
