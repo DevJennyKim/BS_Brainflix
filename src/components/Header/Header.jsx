@@ -1,6 +1,6 @@
 import './Header.scss';
 import logo from '../../assets/logo/BrainFlix-logo.svg';
-import serchIcon from '../../assets/icons/search.svg';
+import searchIcon from '../../assets/icons/search.svg';
 import uploadIcon from '../../assets/icons/upload.svg';
 import profileImg from '../../assets/images/Mohan-muruge.jpg';
 
@@ -14,7 +14,7 @@ function Header() {
         <div className="nav__features">
           <div className="nav__input-container">
             <div className="nav__input">
-              <img src={serchIcon} alt="Search" className="nav__input-icon" />
+              <img src={searchIcon} alt="Search" className="nav__input-icon" />
               <input
                 type="text"
                 placeholder="Search"
