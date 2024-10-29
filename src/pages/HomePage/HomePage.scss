@@ -1,0 +1,43 @@
+@use './styles/partials/globals' as *;
+@use './styles/partials/variables' as *;
+@use './styles/partials/mixins' as *;
+
+.bottom {
+  display: flex;
+  justify-content: center;
+  width: 85%;
+  margin: 0 auto;
+  &__block1 {
+    width: 70%;
+    flex-grow: 1;
+  }
+  &__block2 {
+    flex-grow: 1;
+    width: auto;
+    border-left: 2px solid $mercury;
+  }
+  @include tablet {
+    flex-direction: column;
+    width: 90%;
+    &__block1 {
+      width: 100%;
+    }
+    &__block2 {
+      width: 100%;
+      border-left: none;
+      border-top: 2px solid $mercury;
+    }
+  }
+  @include mobile {
+    flex-direction: column;
+    width: 90%;
+    &__block1 {
+      width: 100%;
+    }
+    &__block2 {
+      width: 100%;
+      border-left: none;
+      border-top: 2px solid $mercury;
+    }
+  }
+}
