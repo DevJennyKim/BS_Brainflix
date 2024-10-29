@@ -1,26 +1,27 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './HomePage.scss';
 import Hero from '../../components/Hero/Hero';
 import Description from '../../components/Description/Description';
 import VideoList from '../../components/VideoList/VideoList';
 import CommentsList from '../../components/CommentsList/CommentsList';
-// import data from '../../data/video-details.json';
 
 function HomePage() {
+  const { videoId } = useParams();
   const [videoData, setVideoData] = useState([]);
-  const [activeVideoId, setActiveVideoId] = useState(null);
+  const [activeVideoId, setActiveVideoId] = useState(videoId || null);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const API_KEY = '760904be-166b-45d5-9bb5-76d6e2ccc66a';
   const api_url =
     'https://unit-3-project-api-0a5620414506.herokuapp.com/videos/';
+
   useEffect(() => {
     const getVideo = async () => {
       try {
         const { data } = await axios.get(`${api_url}?api_key=${API_KEY}`);
         setVideoData(data);
-        if (data.length > 0) {
+        if (!activeVideoId) {
           setActiveVideoId(data[0].id);
         }
       } catch (error) {
@@ -28,11 +29,8 @@ function HomePage() {
       }
     };
     getVideo();
-    console.log(videoData);
   }, []);
 
-  // const selectedVideo =
-  //   videoData.find((video) => video.id === activeVideoId) || null;
   const changeActiveVideo = (id) => {
     setActiveVideoId(id);
   };
@@ -51,8 +49,6 @@ function HomePage() {
       }
     };
     getSelectedVideo();
-    console.log('videoData:', videoData);
-    console.log('selectedVideo :', selectedVideo);
   }, [activeVideoId]);
 
   const useTimeStamp = (timeStamp) => {
@@ -108,7 +104,7 @@ function HomePage() {
           </div>
         </>
       ) : (
-        <div>Loading...</div>
+        <div className="loading">Loading...</div>
       )}
     </main>
   );

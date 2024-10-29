@@ -30,7 +30,7 @@ function Header() {
               />
             </div>
           </div>
-          <Link to="/upload">
+          <Link to="/upload" className="nav__btn-link">
             <button type="button" className="nav__btn-upload">
               <img
                 src={uploadIcon}

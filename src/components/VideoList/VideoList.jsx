@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import VideoPreview from '../VideoPreview/VideoPreview';
 import './VideoList.scss';
 
@@ -11,9 +10,8 @@ function VideoList({ data, activeVideoId, changeActiveVideo }) {
         {data
           .filter((video) => video.id !== activeVideoId)
           .map((video) => (
-            <Link to={`/video/${video.id}`}>
+            <Link key={video.id} to={`/videos/${video.id}`}>
               <VideoPreview
-                key={video.id}
                 video={video}
                 changeActiveVideo={changeActiveVideo}
               />

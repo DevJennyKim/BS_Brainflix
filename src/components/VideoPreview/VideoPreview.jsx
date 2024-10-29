@@ -2,6 +2,7 @@ import './VideoPreview.scss';
 function VideoPreview({ video, changeActiveVideo }) {
   const handleClick = () => {
     changeActiveVideo(video.id);
+    console.log(video.id);
   };
   return (
     <div key={video.id} className="videos__item" onClick={handleClick}>
