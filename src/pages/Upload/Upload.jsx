@@ -6,7 +6,7 @@ function Upload() {
     <section className="upload">
       <div className="upload__wrapper">
         <h2 className="upload__title">Upload Video</h2>
-        <form className="upload__form">
+        <form className="upload__form" id="uploadFrom">
           <div className="upload__container">
             <div className="upload__thumbnail">
               <p className="upload__thumbnail-title">video thumbnail</p>
@@ -16,19 +16,23 @@ function Upload() {
                 className="upload__thumbnail-image"
               />
             </div>
-            <div>
+            <div className="upload__input-wrapper">
               <label className="upload__label">
+                title your video
                 <input
                   type="text"
                   name="uploadTitle"
-                  className="upload__title"
+                  className="upload__input-title"
+                  placeholder="Add a title to your video"
                 />
               </label>
               <label className="upload__label">
+                add a video description
                 <textarea
                   type="text"
                   name="uploadDescription"
-                  className="upload__description"
+                  className="upload__input-description"
+                  placeholder="Add a description to your video"
                 />
               </label>
             </div>
