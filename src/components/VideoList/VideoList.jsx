@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import VideoPreview from '../VideoPreview/VideoPreview';
 import './VideoList.scss';
 
@@ -9,11 +11,13 @@ function VideoList({ data, activeVideoId, changeActiveVideo }) {
         {data
           .filter((video) => video.id !== activeVideoId)
           .map((video) => (
-            <VideoPreview
-              key={video.id}
-              video={video}
-              changeActiveVideo={changeActiveVideo}
-            />
+            <Link to={`/video/${video.id}`}>
+              <VideoPreview
+                key={video.id}
+                video={video}
+                changeActiveVideo={changeActiveVideo}
+              />
+            </Link>
           ))}
       </div>
     </section>
