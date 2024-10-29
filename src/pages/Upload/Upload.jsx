@@ -1,0 +1,49 @@
+import thumbnail from '../../assets/images/Upload-video-preview.jpg';
+import publish from '../../assets/icons/publish.svg';
+import './Upload.scss';
+function Upload() {
+  return (
+    <section className="upload">
+      <div className="upload__wrapper">
+        <h2 className="upload__title">Upload Video</h2>
+        <form className="upload__form">
+          <div className="upload__container">
+            <div className="upload__thumbnail">
+              <p className="upload__thumbnail-title">video thumbnail</p>
+              <img
+                src={thumbnail}
+                alt="thumbnail"
+                className="upload__thumbnail-image"
+              />
+            </div>
+            <div>
+              <label className="upload__label">
+                <input
+                  type="text"
+                  name="uploadTitle"
+                  className="upload__title"
+                />
+              </label>
+              <label className="upload__label">
+                <textarea
+                  type="text"
+                  name="uploadDescription"
+                  className="upload__description"
+                />
+              </label>
+            </div>
+          </div>
+          <div className="upload__btn-container">
+            <button className="upload__btn-cancel">Cancel</button>
+            <button className="upload__btn-publish">
+              <img src={publish} alt="publish" />
+              Publish
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  );
+}
+
+export default Upload;
