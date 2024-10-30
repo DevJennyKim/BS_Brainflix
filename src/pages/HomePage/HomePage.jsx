@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-
 import './HomePage.scss';
 import Hero from '../../components/Hero/Hero';
 import Description from '../../components/Description/Description';
