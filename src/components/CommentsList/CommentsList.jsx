@@ -48,6 +48,9 @@ function CommentsList({
       setFormError(false);
     }
   };
+  comments = comments.sort(
+    (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+  );
   return (
     <section className="comments">
       <h3 className="comments__title">{comments.length} Comments</h3>

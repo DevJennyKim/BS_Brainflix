@@ -51,6 +51,7 @@ function HomePage() {
     getSelectedVideo();
   }, [activeVideoId]);
   console.log(selectedVideo);
+
   const handleCommentPost = (newComment) => {
     setSelectedVideo((originalVideoData) => ({
       comments: [newComment, ...originalVideoData.comments],
