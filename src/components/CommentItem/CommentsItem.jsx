@@ -2,7 +2,18 @@ import TimeAgo from 'react-timeago';
 import deleteIcon from '../../assets/icons/delete.svg';
 import './CommentsItem.scss';
 
-function CommentsItem({ comment }) {
+function CommentsItem({ commentId, comment, videoId, API_URL, API_KEY }) {
+  const handleDelete = async () => {
+    console.log(commentId);
+    try {
+      const response = await axios.delete(
+        `${API_URL}${videoId}/comments/${commentId}?api_key=${API_KEY}`
+      );
+      return console.log(response.data);
+    } catch (error) {
+      'error deleting comments: ', error;
+    }
+  };
   return (
     <>
       <div className="comments__item">
@@ -15,7 +26,7 @@ function CommentsItem({ comment }) {
             </p>
           </div>
           <p className="comments__text">{comment.comment}</p>
-          <button className="comments__delete">
+          <button className="comments__delete" onClick={handleDelete}>
             <img
               src={deleteIcon}
               alt="deleteIcon"

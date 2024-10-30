@@ -92,7 +92,14 @@ function CommentsList({
 
       <div className="comments__list">
         {comments.map((comment) => (
-          <CommentsItem key={comment.id} comment={comment} />
+          <CommentsItem
+            key={comment.id}
+            commentId={comment.id}
+            comment={comment}
+            videoId={videoId}
+            API_URL={API_URL}
+            API_KEY={API_KEY}
+          />
         ))}
       </div>
     </section>
