@@ -1,8 +1,9 @@
+import TimeAgo from 'react-timeago';
 import './Description.scss';
 import viewIcons from '../../assets/icons/views.svg';
 import likeIcons from '../../assets/icons/likes.svg';
 
-function Description({ video, timeStamp }) {
+function Description({ video }) {
   return (
     <section className="description">
       <h1 className="description__title">{video.title}</h1>
@@ -10,7 +11,7 @@ function Description({ video, timeStamp }) {
         <div className="description__info">
           <h3 className="description__info-author">By {video.channel}</h3>
           <p className="description__info-date">
-            {timeStamp(new Date(video.timestamp))}
+            <TimeAgo date={video.timestamp} />
           </p>
         </div>
         <div className="description__count">

@@ -1,3 +1,4 @@
+import TimeAgo from 'react-timeago';
 import './CommentsItem.scss';
 
 function CommentsItem({ comment, timeStamp }) {
@@ -9,7 +10,7 @@ function CommentsItem({ comment, timeStamp }) {
           <div className="comments__author-wrapper">
             <h4 className="comments__author">{comment.name}</h4>
             <p className="comments__date">
-              {timeStamp(new Date(comment.timestamp))}
+              <TimeAgo date={comment.timestamp} />
             </p>
           </div>
           <p className="comments__text">{comment.comment}</p>

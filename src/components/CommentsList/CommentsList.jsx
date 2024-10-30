@@ -3,7 +3,7 @@ import './CommentsList.scss';
 import CommentsItem from '../CommentItem/CommentsItem';
 import commentIcon from '../../assets/icons/add_comment.svg';
 import profileImg from '../../assets/images/Mohan-muruge.jpg';
-function CommentsList({ comments, timeStamp }) {
+function CommentsList({ comments }) {
   return (
     <section className="comments">
       <h3 className="comments__title">{comments.length} Comments</h3>
@@ -38,11 +38,7 @@ function CommentsList({ comments, timeStamp }) {
 
       <div className="comments__list">
         {comments.map((comment) => (
-          <CommentsItem
-            key={comment.id}
-            comment={comment}
-            timeStamp={timeStamp}
-          />
+          <CommentsItem key={comment.id} comment={comment} />
         ))}
       </div>
     </section>
