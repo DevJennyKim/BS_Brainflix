@@ -1,9 +1,14 @@
 import './CommentsList.scss';
-
+import { useState } from 'react';
 import CommentsItem from '../CommentItem/CommentsItem';
 import commentIcon from '../../assets/icons/add_comment.svg';
 import profileImg from '../../assets/images/Mohan-muruge.jpg';
 function CommentsList({ comments }) {
+  const [newComment, setNewComment] = useState('');
+  const handleChangeComment = ({ target }) => {
+    setNewComment(target.value);
+    console.log(newComment);
+  };
   return (
     <section className="comments">
       <h3 className="comments__title">{comments.length} Comments</h3>
@@ -25,6 +30,7 @@ function CommentsList({ comments }) {
               id="comments"
               placeholder="Add a new comment"
               className="comments__input"
+              onChange={handleChangeComment}
               cols="30"
               rows="5"
             ></textarea>
