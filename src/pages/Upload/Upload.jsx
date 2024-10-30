@@ -45,7 +45,14 @@ function Upload() {
             </div>
           </div>
           <div className="upload__btn-container">
-            <button className="upload__btn-cancel">Cancel</button>
+            <button
+              className="upload__btn-cancel"
+              onClick={() => {
+                navigate('/');
+              }}
+            >
+              Cancel
+            </button>
             <button className="upload__btn-publish" onClick={handleUpload}>
               <img src={publish} alt="publish" />
               Publish
