@@ -43,8 +43,8 @@
   &__input-wrapper {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     flex-grow: 1;
-    gap: 4rem;
   }
   &__label {
     display: flex;
