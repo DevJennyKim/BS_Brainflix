@@ -1,4 +1,5 @@
 import TimeAgo from 'react-timeago';
+import axios from 'axios';
 import deleteIcon from '../../assets/icons/delete.svg';
 import './CommentsItem.scss';
 
@@ -9,9 +10,8 @@ function CommentsItem({ commentId, comment, videoId, API_URL, API_KEY }) {
       const response = await axios.delete(
         `${API_URL}${videoId}/comments/${commentId}?api_key=${API_KEY}`
       );
-      return console.log(response.data);
     } catch (error) {
-      'error deleting comments: ', error;
+      console.error('error deleting comments: ', error);
     }
   };
   return (
