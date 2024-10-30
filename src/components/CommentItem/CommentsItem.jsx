@@ -3,12 +3,22 @@ import axios from 'axios';
 import deleteIcon from '../../assets/icons/delete.svg';
 import './CommentsItem.scss';
 
-function CommentsItem({ commentId, comment, videoId, API_URL, API_KEY }) {
+function CommentsItem({
+  commentId,
+  comment,
+  videoId,
+  API_URL,
+  API_KEY,
+  setComments,
+}) {
   const handleDelete = async () => {
-    console.log(commentId);
     try {
       const response = await axios.delete(
         `${API_URL}${videoId}/comments/${commentId}?api_key=${API_KEY}`
+      );
+      //need to update the comments......
+      setComments((originalCommentData) =>
+        console.log('origin:', originalCommentData)
       );
     } catch (error) {
       console.error('error deleting comments: ', error);

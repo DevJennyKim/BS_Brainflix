@@ -26,7 +26,11 @@ function CommentsList({
     }
   };
   const isFormValid = () => {
-    return !!newComment;
+    if (!newComment) {
+      return false;
+    } else {
+      return true;
+    }
   };
   const handleCommentPost = async (newCommentData) => {
     try {
@@ -39,6 +43,7 @@ function CommentsList({
         response.data,
         ...originalCommentData,
       ]);
+      setNewComment('');
     } catch (error) {
       console.error('error adding comments: ', error);
     }
@@ -48,12 +53,10 @@ function CommentsList({
     event.preventDefault();
     if (isFormValid()) {
       handleCommentPost({
-        name: 'Mohan Muruge', // what should I do for this name..?
+        name: 'Jenny Kim',
         comment: newComment,
       });
-
       setFormError(true);
-      setNewComment('');
     } else {
       setFormError(false);
     }
@@ -82,6 +85,7 @@ function CommentsList({
               type="text"
               name="comments"
               id="comments"
+              value={newComment}
               placeholder="Add a new comment"
               className={`comments__input ${
                 !formError ? 'comments__input--error' : ''
@@ -109,6 +113,7 @@ function CommentsList({
               videoId={videoId}
               API_URL={API_URL}
               API_KEY={API_KEY}
+              setComments={setComments}
             />
           ))}
       </div>
