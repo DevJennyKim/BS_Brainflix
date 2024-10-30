@@ -62,6 +62,9 @@
     &:focus {
       outline: 2px solid $flix-blue;
     }
+    &--error {
+      outline: 1px solid red;
+    }
   }
   &__submit {
     @include btn_style;

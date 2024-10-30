@@ -5,9 +5,13 @@ import commentIcon from '../../assets/icons/add_comment.svg';
 import profileImg from '../../assets/images/Mohan-muruge.jpg';
 function CommentsList({ comments }) {
   const [newComment, setNewComment] = useState('');
+  const [formError, setFormError] = useState(false);
   const [, setFormSubmitted] = useState('');
   const handleChangeComment = (event) => {
     setNewComment(event.target.value);
+    if (event.target.value) {
+      setFormError(false);
+    }
   };
   const isFormValid = () => {
     if (!newComment) {
@@ -20,9 +24,13 @@ function CommentsList({ comments }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (isFormValid()) {
+      setFormError(true);
       console.log('test succeed!');
-    } else console.log('error');
-    setFormSubmitted;
+    } else {
+      console.log('error');
+      setFormError(false);
+    }
+    setFormSubmitted(true);
   };
   return (
     <section className="comments">
@@ -49,19 +57,14 @@ function CommentsList({ comments }) {
               id="comments"
               placeholder="Add a new comment"
               className={`comments__input ${
-                !isFormValid ? 'comments__input--error' : ''
+                !formError ? 'comments__input--error' : ''
               }`}
               onChange={handleChangeComment}
               cols="30"
               rows="5"
             ></textarea>
           </label>
-          <button
-            type="submit"
-            className="comments__submit"
-            id="commentsBtn"
-            disabled={!isFormValid()}
-          >
+          <button type="submit" className="comments__submit" id="commentsBtn">
             <img src={commentIcon} alt="" className="comments__submit-icon" />
             comment
           </button>
