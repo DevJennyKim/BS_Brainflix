@@ -1,4 +1,5 @@
 import TimeAgo from 'react-timeago';
+import deleteIcon from '../../assets/icons/delete.svg';
 import './CommentsItem.scss';
 
 function CommentsItem({ comment }) {
@@ -14,6 +15,13 @@ function CommentsItem({ comment }) {
             </p>
           </div>
           <p className="comments__text">{comment.comment}</p>
+          <button className="comments__delete">
+            <img
+              src={deleteIcon}
+              alt="deleteIcon"
+              className="comments__delete-icon"
+            />
+          </button>
         </div>
       </div>
     </>
