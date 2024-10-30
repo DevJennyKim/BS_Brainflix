@@ -18,8 +18,9 @@ function CommentsItem({
       );
       //need to update the comments......
       setComments((originalCommentData) =>
-        console.log('origin:', originalCommentData)
+        originalCommentData.filter((item) => item.id !== commentId)
       );
+      console.log(commentId);
     } catch (error) {
       console.error('error deleting comments: ', error);
     }
