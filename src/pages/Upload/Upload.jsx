@@ -1,7 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import thumbnail from '../../assets/images/Upload-video-preview.jpg';
 import publish from '../../assets/icons/publish.svg';
 import './Upload.scss';
 function Upload() {
+  const navigate = useNavigate();
+  const handleUpload = (event) => {
+    event.preventDefault();
+    alert('Video uploaded successfully!!');
+    navigate('/');
+  };
   return (
     <section className="upload">
       <div className="upload__wrapper">
@@ -39,7 +46,7 @@ function Upload() {
           </div>
           <div className="upload__btn-container">
             <button className="upload__btn-cancel">Cancel</button>
-            <button className="upload__btn-publish">
+            <button className="upload__btn-publish" onClick={handleUpload}>
               <img src={publish} alt="publish" />
               Publish
             </button>
