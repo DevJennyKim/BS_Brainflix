@@ -48,10 +48,15 @@
     }
   }
   &__btn-upload {
-    @include btn_style;
+    justify-content: space-between;
     width: 16rem;
+    @include btn_style;
     &-icon {
-      margin: 0 1.5rem 0 0.2rem;
+      margin-left: 0.2rem;
+    }
+    &::after {
+      content: '';
+      flex-grow: 0.1;
     }
   }
   &__profile {
