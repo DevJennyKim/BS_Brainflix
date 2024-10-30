@@ -14,13 +14,13 @@ function HomePage() {
   const [activeVideoId, setActiveVideoId] = useState(videoId || null);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const API_KEY = '760904be-166b-45d5-9bb5-76d6e2ccc66a';
-  const api_url =
+  const API_URL =
     'https://unit-3-project-api-0a5620414506.herokuapp.com/videos/';
 
   useEffect(() => {
     const getVideo = async () => {
       try {
-        const { data } = await axios.get(`${api_url}?api_key=${API_KEY}`);
+        const { data } = await axios.get(`${API_URL}?api_key=${API_KEY}`);
         setVideoData(data);
         if (!activeVideoId) {
           setActiveVideoId(data[0].id);
@@ -41,7 +41,7 @@ function HomePage() {
       if (activeVideoId) {
         try {
           const { data } = await axios.get(
-            `${api_url}${activeVideoId}?api_key=${API_KEY}`
+            `${API_URL}${activeVideoId}?api_key=${API_KEY}`
           );
           setSelectedVideo(data);
         } catch (error) {
@@ -52,33 +52,6 @@ function HomePage() {
     getSelectedVideo();
   }, [activeVideoId]);
 
-  // const dynamicTimeStamp = (timeStamp) => {
-  //   const currentDate = new Date();
-
-  //   const sec = Math.floor((currentDate - timeStamp) / 1000);
-  //   const min = Math.floor(sec / 60);
-  //   const hours = Math.floor(min / 60);
-  //   const days = Math.floor(hours / 24);
-  //   const weeks = Math.floor(days / 7);
-  //   const month = Math.floor(weeks / 4);
-  //   const years = Math.floor(month / 12);
-
-  //   if (years >= 1) {
-  //     return `${years} years ago`;
-  //   } else if (month >= 1) {
-  //     return `${month} month ago`;
-  //   } else if (weeks >= 1) {
-  //     return `${weeks} weeks ago`;
-  //   } else if (days >= 1) {
-  //     return `${days} days ago`;
-  //   } else if (hours >= 1) {
-  //     return `${hours} hours ago`;
-  //   } else if (min >= 1) {
-  //     return `${min} minutes ago`;
-  //   } else {
-  //     return `just now`;
-  //   }
-  // };
   return (
     <main>
       {selectedVideo ? (

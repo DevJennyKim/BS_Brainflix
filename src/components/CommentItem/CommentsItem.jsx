@@ -1,7 +1,7 @@
 import TimeAgo from 'react-timeago';
 import './CommentsItem.scss';
 
-function CommentsItem({ comment, timeStamp }) {
+function CommentsItem({ comment }) {
   return (
     <>
       <div className="comments__item">
