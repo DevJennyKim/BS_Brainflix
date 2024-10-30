@@ -42,6 +42,7 @@ function HomePage() {
           const { data } = await axios.get(
             `${API_URL}${activeVideoId}?api_key=${API_KEY}`
           );
+          console.log('setSelectedVideo data:', data);
           setSelectedVideo(data);
         } catch (error) {
           console.error('Selected video fetching error:', error);
@@ -51,12 +52,6 @@ function HomePage() {
     getSelectedVideo();
   }, [activeVideoId]);
   console.log(selectedVideo);
-
-  const handleCommentPost = (newComment) => {
-    setSelectedVideo((originalVideoData) => ({
-      comments: [newComment, ...originalVideoData.comments],
-    }));
-  };
 
   return (
     <main>
@@ -74,7 +69,6 @@ function HomePage() {
                 videoId={activeVideoId}
                 API_URL={API_URL}
                 API_KEY={API_KEY}
-                handleCommentPost={handleCommentPost}
               />
             </div>
             <div className="bottom__block2">

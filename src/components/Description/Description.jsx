@@ -4,6 +4,7 @@ import viewIcons from '../../assets/icons/views.svg';
 import likeIcons from '../../assets/icons/likes.svg';
 
 function Description({ video }) {
+  console.log('video Time:', video);
   return (
     <section className="description">
       <h1 className="description__title">{video.title}</h1>
@@ -11,7 +12,7 @@ function Description({ video }) {
         <div className="description__info">
           <h3 className="description__info-author">By {video.channel}</h3>
           <p className="description__info-date">
-            <TimeAgo date={video.timestamp} />
+            <TimeAgo date={new Date(video.timestamp)} />
           </p>
         </div>
         <div className="description__count">

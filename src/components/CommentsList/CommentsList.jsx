@@ -6,18 +6,18 @@ import commentIcon from '../../assets/icons/add_comment.svg';
 import profileImg from '../../assets/images/Mohan-muruge.jpg';
 
 function CommentsList({
-  comments,
+  comments: initialComments,
   videoId,
   API_URL,
   API_KEY,
-  handleCommentPost,
 }) {
-  const [originalComments, setOriginalComments] = useState(comments);
-  useEffect(() => {
-    setOriginalComments(comments);
-  }, [comments]);
+  const [comments, setComments] = useState(initialComments);
   const [newComment, setNewComment] = useState('');
   const [formError, setFormError] = useState(true);
+
+  useEffect(() => {
+    setComments(initialComments);
+  }, [initialComments]);
 
   const handleChangeComment = (event) => {
     setNewComment(event.target.value);
@@ -28,26 +28,28 @@ function CommentsList({
   const isFormValid = () => {
     return !!newComment;
   };
+  const handleCommentPost = async (newCommentData) => {
+    try {
+      const response = await axios.post(
+        `${API_URL}${videoId}/comments?api_key=${API_KEY}`,
+        newCommentData
+      );
 
-  const handleSubmit = async (event) => {
+      setComments([response.data, ...comments]);
+      setNewComment('');
+    } catch (error) {
+      console.error('error adding comments: ', error);
+    }
+  };
+
+  const handleSubmit = (event) => {
     event.preventDefault();
     if (isFormValid()) {
       setFormError(true);
-      const newCommentData = {
+      handleCommentPost({
         name: 'Mohan Muruge', // what should I do for this name..?
         comment: newComment,
-      };
-      try {
-        const response = await axios.post(
-          `${API_URL}${videoId}/comments?api_key=${API_KEY}`,
-          newCommentData
-        );
-        console.log(response.data);
-        handleCommentPost(response.data);
-        setNewComment('');
-      } catch (error) {
-        console.error('error adding comments: ', error);
-      }
+      });
     } else {
       setFormError(false);
     }

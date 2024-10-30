@@ -22,7 +22,7 @@ function CommentsItem({ commentId, comment, videoId, API_URL, API_KEY }) {
           <div className="comments__author-wrapper">
             <h4 className="comments__author">{comment.name}</h4>
             <p className="comments__date">
-              <TimeAgo date={comment.timestamp} />
+              <TimeAgo date={new Date(comment.timestamp)} />
             </p>
           </div>
           <p className="comments__text">{comment.comment}</p>
