@@ -1,5 +1,5 @@
 import './CommentsList.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import CommentsItem from '../CommentItem/CommentsItem';
 import commentIcon from '../../assets/icons/add_comment.svg';
@@ -12,6 +12,10 @@ function CommentsList({
   API_KEY,
   handleCommentPost,
 }) {
+  const [originalComments, setOriginalComments] = useState(comments);
+  useEffect(() => {
+    setOriginalComments(comments);
+  }, [comments]);
   const [newComment, setNewComment] = useState('');
   const [formError, setFormError] = useState(true);
 
@@ -48,9 +52,7 @@ function CommentsList({
       setFormError(false);
     }
   };
-  comments = comments.sort(
-    (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
-  );
+
   return (
     <section className="comments">
       <h3 className="comments__title">{comments.length} Comments</h3>
@@ -91,16 +93,18 @@ function CommentsList({
       </div>
 
       <div className="comments__list">
-        {comments.map((comment) => (
-          <CommentsItem
-            key={comment.id}
-            commentId={comment.id}
-            comment={comment}
-            videoId={videoId}
-            API_URL={API_URL}
-            API_KEY={API_KEY}
-          />
-        ))}
+        {comments
+          .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+          .map((comment) => (
+            <CommentsItem
+              key={comment.id}
+              commentId={comment.id}
+              comment={comment}
+              videoId={videoId}
+              API_URL={API_URL}
+              API_KEY={API_KEY}
+            />
+          ))}
       </div>
     </section>
   );
