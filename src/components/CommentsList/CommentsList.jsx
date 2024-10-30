@@ -5,9 +5,24 @@ import commentIcon from '../../assets/icons/add_comment.svg';
 import profileImg from '../../assets/images/Mohan-muruge.jpg';
 function CommentsList({ comments }) {
   const [newComment, setNewComment] = useState('');
-  const handleChangeComment = ({ target }) => {
-    setNewComment(target.value);
-    console.log(newComment);
+  const [, setFormSubmitted] = useState('');
+  const handleChangeComment = (event) => {
+    setNewComment(event.target.value);
+  };
+  const isFormValid = () => {
+    if (!newComment) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (isFormValid()) {
+      console.log('test succeed!');
+    } else console.log('error');
+    setFormSubmitted;
   };
   return (
     <section className="comments">
@@ -21,7 +36,11 @@ function CommentsList({ comments }) {
           />
         </div>
 
-        <form className="comments__form" id="commentForm">
+        <form
+          className="comments__form"
+          id="commentForm"
+          onSubmit={handleSubmit}
+        >
           <label className="comments__input-label">
             join the conversation
             <textarea
@@ -29,13 +48,20 @@ function CommentsList({ comments }) {
               name="comments"
               id="comments"
               placeholder="Add a new comment"
-              className="comments__input"
+              className={`comments__input ${
+                !isFormValid ? 'comments__input--error' : ''
+              }`}
               onChange={handleChangeComment}
               cols="30"
               rows="5"
             ></textarea>
           </label>
-          <button type="submit" className="comments__submit" id="commentsBtn">
+          <button
+            type="submit"
+            className="comments__submit"
+            id="commentsBtn"
+            disabled={!isFormValid()}
+          >
             <img src={commentIcon} alt="" className="comments__submit-icon" />
             comment
           </button>
