@@ -50,6 +50,12 @@ function HomePage() {
     };
     getSelectedVideo();
   }, [activeVideoId]);
+  console.log(selectedVideo);
+  const handleCommentPost = (newComment) => {
+    setSelectedVideo((originalVideoData) => ({
+      comments: [newComment, ...originalVideoData.comments],
+    }));
+  };
 
   return (
     <main>
@@ -67,6 +73,7 @@ function HomePage() {
                 videoId={activeVideoId}
                 API_URL={API_URL}
                 API_KEY={API_KEY}
+                handleCommentPost={handleCommentPost}
               />
             </div>
             <div className="bottom__block2">

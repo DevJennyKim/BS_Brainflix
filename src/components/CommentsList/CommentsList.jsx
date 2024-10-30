@@ -5,7 +5,13 @@ import CommentsItem from '../CommentItem/CommentsItem';
 import commentIcon from '../../assets/icons/add_comment.svg';
 import profileImg from '../../assets/images/Mohan-muruge.jpg';
 
-function CommentsList({ comments, videoId, API_URL, API_KEY }) {
+function CommentsList({
+  comments,
+  videoId,
+  API_URL,
+  API_KEY,
+  handleCommentPost,
+}) {
   const [newComment, setNewComment] = useState('');
   const [formError, setFormError] = useState(true);
 
@@ -33,6 +39,7 @@ function CommentsList({ comments, videoId, API_URL, API_KEY }) {
           newCommentData
         );
         console.log(response.data);
+        handleCommentPost(response.data);
         setNewComment('');
       } catch (error) {
         console.error('error adding comments: ', error);
