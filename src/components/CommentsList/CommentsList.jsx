@@ -22,7 +22,7 @@ function CommentsList({
   const handleChangeComment = (event) => {
     setNewComment(event.target.value);
     if (event.target.value) {
-      setFormError(false);
+      setFormError(true);
     }
   };
   const isFormValid = () => {
@@ -35,8 +35,10 @@ function CommentsList({
         newCommentData
       );
 
-      setComments([response.data, ...comments]);
-      setNewComment('');
+      setComments((originalCommentData) => [
+        response.data,
+        ...originalCommentData,
+      ]);
     } catch (error) {
       console.error('error adding comments: ', error);
     }
@@ -45,11 +47,13 @@ function CommentsList({
   const handleSubmit = (event) => {
     event.preventDefault();
     if (isFormValid()) {
-      setFormError(true);
       handleCommentPost({
         name: 'Mohan Muruge', // what should I do for this name..?
         comment: newComment,
       });
+
+      setFormError(true);
+      setNewComment('');
     } else {
       setFormError(false);
     }

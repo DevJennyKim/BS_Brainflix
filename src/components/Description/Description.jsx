@@ -4,7 +4,6 @@ import viewIcons from '../../assets/icons/views.svg';
 import likeIcons from '../../assets/icons/likes.svg';
 
 function Description({ video }) {
-  console.log('video Time:', video);
   return (
     <section className="description">
       <h1 className="description__title">{video.title}</h1>

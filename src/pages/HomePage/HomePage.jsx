@@ -42,7 +42,6 @@ function HomePage() {
           const { data } = await axios.get(
             `${API_URL}${activeVideoId}?api_key=${API_KEY}`
           );
-          console.log('setSelectedVideo data:', data);
           setSelectedVideo(data);
         } catch (error) {
           console.error('Selected video fetching error:', error);
@@ -51,7 +50,6 @@ function HomePage() {
     };
     getSelectedVideo();
   }, [activeVideoId]);
-  console.log(selectedVideo);
 
   return (
     <main>
