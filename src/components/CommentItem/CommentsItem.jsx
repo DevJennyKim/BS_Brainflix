@@ -16,11 +16,9 @@ function CommentsItem({
       const response = await axios.delete(
         `${API_URL}${videoId}/comments/${commentId}?api_key=${API_KEY}`
       );
-      //need to update the comments......
       setComments((originalCommentData) =>
         originalCommentData.filter((item) => item.id !== commentId)
       );
-      console.log(commentId);
     } catch (error) {
       console.error('error deleting comments: ', error);
     }

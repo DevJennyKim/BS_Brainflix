@@ -5,19 +5,24 @@ import CommentsItem from '../CommentItem/CommentsItem';
 import commentIcon from '../../assets/icons/add_comment.svg';
 import profileImg from '../../assets/images/Mohan-muruge.jpg';
 
-function CommentsList({
-  comments: initialComments,
-  videoId,
-  API_URL,
-  API_KEY,
-}) {
-  const [comments, setComments] = useState(initialComments);
+function CommentsList({ videoId, API_URL, API_KEY }) {
+  const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
   const [formError, setFormError] = useState(true);
 
   useEffect(() => {
-    setComments(initialComments);
-  }, [initialComments]);
+    const getComments = async () => {
+      try {
+        const response = await axios.get(
+          `${API_URL}${videoId}?api_key=${API_KEY}`
+        );
+        setComments(response.data.comments);
+      } catch (error) {
+        console.error('error fetching comments: ', error);
+      }
+    };
+    getComments();
+  }, [videoId]);
 
   const handleChangeComment = (event) => {
     setNewComment(event.target.value);
