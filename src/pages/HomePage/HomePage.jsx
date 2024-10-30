@@ -62,7 +62,12 @@ function HomePage() {
           <div className="bottom">
             <div className="bottom__block1">
               <Description video={selectedVideo} />
-              <CommentsList comments={selectedVideo.comments} />
+              <CommentsList
+                comments={selectedVideo.comments}
+                videoId={activeVideoId}
+                API_URL={API_URL}
+                API_KEY={API_KEY}
+              />
             </div>
             <div className="bottom__block2">
               <VideoList

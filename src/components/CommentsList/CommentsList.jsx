@@ -1,12 +1,14 @@
 import './CommentsList.scss';
 import { useState } from 'react';
+import axios from 'axios';
 import CommentsItem from '../CommentItem/CommentsItem';
 import commentIcon from '../../assets/icons/add_comment.svg';
 import profileImg from '../../assets/images/Mohan-muruge.jpg';
-function CommentsList({ comments }) {
+
+function CommentsList({ comments, videoId, API_URL, API_KEY }) {
   const [newComment, setNewComment] = useState('');
-  const [formError, setFormError] = useState(false);
-  const [, setFormSubmitted] = useState('');
+  const [formError, setFormError] = useState(true);
+
   const handleChangeComment = (event) => {
     setNewComment(event.target.value);
     if (event.target.value) {
@@ -14,23 +16,30 @@ function CommentsList({ comments }) {
     }
   };
   const isFormValid = () => {
-    if (!newComment) {
-      return false;
-    } else {
-      return true;
-    }
+    return !!newComment;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (isFormValid()) {
       setFormError(true);
-      console.log('test succeed!');
+      const newCommentData = {
+        name: 'Mohan Muruge', // what should I do for this name..?
+        comment: newComment,
+      };
+      try {
+        const response = await axios.post(
+          `${API_URL}${videoId}/comments?api_key=${API_KEY}`,
+          newCommentData
+        );
+        console.log(response.data);
+        setNewComment('');
+      } catch (error) {
+        console.error('error adding comments: ', error);
+      }
     } else {
-      console.log('error');
       setFormError(false);
     }
-    setFormSubmitted(true);
   };
   return (
     <section className="comments">
@@ -60,8 +69,8 @@ function CommentsList({ comments }) {
                 !formError ? 'comments__input--error' : ''
               }`}
               onChange={handleChangeComment}
-              cols="30"
-              rows="5"
+              cols={30}
+              rows={5}
             ></textarea>
           </label>
           <button type="submit" className="comments__submit" id="commentsBtn">

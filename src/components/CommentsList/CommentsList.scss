@@ -59,11 +59,11 @@
     &::placeholder {
       color: black;
     }
-    &:focus {
-      outline: 2px solid $flix-blue;
-    }
     &--error {
       outline: 1px solid red;
+    }
+    &:focus {
+      outline: 2px solid $flix-blue;
     }
   }
   &__submit {
