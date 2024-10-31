@@ -54,7 +54,7 @@ function Upload() {
               Cancel
             </button>
             <button className="upload__btn-publish" onClick={handleUpload}>
-              <img src={publish} alt="publish" />
+              <img src={publish} alt="publish" className="upload__btn-icon" />
               Publish
             </button>
           </div>
