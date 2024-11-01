@@ -96,8 +96,6 @@ function CommentsList({ videoId, API_URL, API_KEY }) {
                 !formError ? 'comments__input--error' : ''
               }`}
               onChange={handleChangeComment}
-              cols={30}
-              rows={5}
             ></textarea>
           </label>
           <button type="submit" className="comments__submit" id="commentsBtn">
