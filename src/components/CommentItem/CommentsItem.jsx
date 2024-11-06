@@ -35,7 +35,11 @@ function CommentsItem({
             </p>
           </div>
           <p className="comments__text">{comment.comment}</p>
-          <button className="comments__delete" onClick={handleDelete}>
+          <button
+            className="comments__delete"
+            onClick={handleDelete}
+            type="submit"
+          >
             <img
               src={deleteIcon}
               alt="deleteIcon"

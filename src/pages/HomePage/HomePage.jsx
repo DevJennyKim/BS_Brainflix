@@ -6,6 +6,7 @@ import Hero from '../../components/Hero/Hero';
 import Description from '../../components/Description/Description';
 import VideoList from '../../components/VideoList/VideoList';
 import CommentsList from '../../components/CommentsList/CommentsList';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 function HomePage() {
   const { videoId } = useParams();
