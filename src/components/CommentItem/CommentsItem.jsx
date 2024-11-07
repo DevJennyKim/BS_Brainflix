@@ -8,13 +8,13 @@ function CommentsItem({
   comment,
   videoId,
   API_URL,
-
+  API_KEY,
   setComments,
 }) {
   const handleDelete = async () => {
     try {
       const response = await axios.delete(
-        `${API_URL}${videoId}/comments/${commentId}`
+        `${API_URL}${videoId}/comments/${commentId}?api_key=${API_KEY}`
       );
       setComments((originalCommentData) =>
         originalCommentData.filter((item) => item.id !== commentId)

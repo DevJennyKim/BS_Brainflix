@@ -12,16 +12,15 @@ function HomePage() {
   const [videoData, setVideoData] = useState([]);
   const [activeVideoId, setActiveVideoId] = useState(videoId || null);
   const [selectedVideo, setSelectedVideo] = useState(null);
-
-  const API_URL = import.meta.env.VITE_BASE_URL;
+  const API_KEY = '760904be-166b-45d5-9bb5-76d6e2ccc66a';
+  const API_URL =
+    'https://unit-3-project-api-0a5620414506.herokuapp.com/videos/';
 
   useEffect(() => {
     const getVideo = async () => {
       try {
-        const { data } = await axios.get(`${API_URL}`);
+        const { data } = await axios.get(`${API_URL}?api_key=${API_KEY}`);
         setVideoData(data);
-        console.log(API_URL);
-
         if (!activeVideoId) {
           setActiveVideoId(data[0].id);
         }
@@ -40,9 +39,10 @@ function HomePage() {
     const getSelectedVideo = async () => {
       if (activeVideoId) {
         try {
-          const { data } = await axios.get(`${API_URL}${activeVideoId}`);
+          const { data } = await axios.get(
+            `${API_URL}${activeVideoId}?api_key=${API_KEY}`
+          );
           setSelectedVideo(data);
-          console.log(`${API_URL}${activeVideoId}`);
         } catch (error) {
           console.error('Selected video fetching error:', error);
         }
@@ -50,8 +50,6 @@ function HomePage() {
     };
     getSelectedVideo();
   }, [activeVideoId]);
-
-  console.log(selectedVideo);
 
   return (
     <main>
@@ -64,7 +62,11 @@ function HomePage() {
           <div className="bottom">
             <div className="bottom__block1">
               <Description video={selectedVideo} />
-              <CommentsList videoId={activeVideoId} API_URL={API_URL} />
+              <CommentsList
+                videoId={activeVideoId}
+                API_URL={API_URL}
+                API_KEY={API_KEY}
+              />
             </div>
             <div className="bottom__block2">
               <VideoList

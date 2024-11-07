@@ -7,7 +7,6 @@ function Upload() {
   const handleUpload = (event) => {
     event.preventDefault();
     alert('Video uploaded successfully!!');
-
     navigate('/');
   };
   return (
