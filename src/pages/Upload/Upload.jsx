@@ -2,17 +2,41 @@ import { useNavigate } from 'react-router-dom';
 import thumbnail from '../../assets/images/Upload-video-preview.jpg';
 import publish from '../../assets/icons/publish.svg';
 import './Upload.scss';
-import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
+import { useState } from 'react';
 import axios from 'axios';
 function Upload() {
   const navigate = useNavigate();
   const API_URL = import.meta.env.VITE_BASE_URL;
-  const [video, setVideo] = useState([]);
   const [newTitle, setNewTitle] = useState('');
   const [newDesc, setNewDesc] = useState('');
   const [newFile, setNewFile] = useState(null);
   const [descError, setDescError] = useState(true);
   const [titleError, setTitleError] = useState(true);
+
+  const redirecting = () => {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1200,
+      timerProgressBar: true,
+      customClass: {
+        title: 'upload__cancel-alert',
+      },
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', Swal.resumeTimer);
+      },
+      didClose: () => {
+        navigate('/');
+      },
+    });
+    Toast.fire({
+      icon: 'success',
+      title: 'Redirecting to homepage',
+    });
+  };
   const handleVideoImgPost = async () => {
     try {
       const formData = new FormData();
@@ -122,14 +146,19 @@ function Upload() {
           </div>
           <div className="upload__btn-container">
             <button
+              type="button"
               className="upload__btn-cancel"
               onClick={() => {
-                navigate('/');
+                redirecting();
               }}
             >
               Cancel
             </button>
-            <button className="upload__btn-publish" onClick={handleUpload}>
+            <button
+              type="submit"
+              className="upload__btn-publish"
+              onClick={handleUpload}
+            >
               <img src={publish} alt="publish" className="upload__btn-icon" />
               Publish
             </button>
@@ -139,5 +168,4 @@ function Upload() {
     </section>
   );
 }
-
 export default Upload;
