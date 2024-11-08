@@ -15,15 +15,13 @@ function Upload() {
   const [titleError, setTitleError] = useState(true);
 
   const redirecting = () => {
-    const Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
+    Swal.fire({
+      position: 'center-center',
       showConfirmButton: false,
       timer: 1200,
       timerProgressBar: true,
-      customClass: {
-        title: 'upload__cancel-alert',
-      },
+      icon: 'warning',
+      title: 'Redirecting to homepage',
       didOpen: (toast) => {
         toast.addEventListener('mouseenter', Swal.stopTimer);
         toast.addEventListener('mouseleave', Swal.resumeTimer);
@@ -31,10 +29,6 @@ function Upload() {
       didClose: () => {
         navigate('/');
       },
-    });
-    Toast.fire({
-      icon: 'success',
-      title: 'Redirecting to homepage',
     });
   };
   const handleVideoImgPost = async () => {
@@ -75,7 +69,10 @@ function Upload() {
 
   const handleUpload = async (event) => {
     event.preventDefault();
-    const imgUrl = await handleVideoImgPost();
+    let imgUrl = 'Upload-video-preview.jpg';
+    if (newFile) {
+      imgUrl = await handleVideoImgPost();
+    }
     if (isFormValid()) {
       handleVideoPost({
         title: newTitle,
@@ -85,13 +82,23 @@ function Upload() {
 
       setTitleError(true);
       setDescError(true);
-      alert('Video uploaded successfully!!');
-      navigate('/');
+      Swal.fire({
+        icon: 'success',
+        title: 'Video Upload Successful!',
+        text: 'Your video has been successfully uploaded!',
+        position: 'center-center',
+        timer: 1500,
+        showConfirmButton: false,
+        didClose: () => {
+          navigate('/');
+        },
+      });
     } else {
       setTitleError(newTitle);
       setDescError(newDesc);
     }
   };
+
   return (
     <section className="upload">
       <div className="upload__wrapper">
@@ -154,11 +161,7 @@ function Upload() {
             >
               Cancel
             </button>
-            <button
-              type="submit"
-              className="upload__btn-publish"
-              onClick={handleUpload}
-            >
+            <button type="submit" className="upload__btn-publish">
               <img src={publish} alt="publish" className="upload__btn-icon" />
               Publish
             </button>
