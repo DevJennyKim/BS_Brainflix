@@ -75,6 +75,9 @@
       &:focus {
         outline: 2px solid $flix-blue;
       }
+      &--error {
+        outline: 1px solid red;
+      }
     }
     &-description {
       display: flex;
@@ -98,6 +101,9 @@
       }
       &:focus {
         outline: 2px solid $flix-blue;
+      }
+      &--error {
+        outline: 1px solid red;
       }
     }
   }
