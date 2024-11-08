@@ -20,9 +20,7 @@ function HomePage() {
       try {
         const { data } = await axios.get(`${API_URL}`);
         setVideoData(data);
-        console.log(API_URL);
-
-        if (!activeVideoId) {
+        if (!videoId) {
           setActiveVideoId(data[0].id);
         }
       } catch (error) {
@@ -30,7 +28,7 @@ function HomePage() {
       }
     };
     getVideo();
-  }, []);
+  }, [videoId]);
 
   const changeActiveVideo = (id) => {
     setActiveVideoId(id);
