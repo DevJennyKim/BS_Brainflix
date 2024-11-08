@@ -5,7 +5,7 @@ import CommentsItem from '../CommentItem/CommentsItem';
 import commentIcon from '../../assets/icons/add_comment.svg';
 import profileImg from '../../assets/images/Mohan-muruge.jpg';
 
-function CommentsList({ videoId, API_URL, API_KEY }) {
+function CommentsList({ videoId, API_URL }) {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
   const [formError, setFormError] = useState(true);
@@ -13,9 +13,7 @@ function CommentsList({ videoId, API_URL, API_KEY }) {
   useEffect(() => {
     const getComments = async () => {
       try {
-        const response = await axios.get(
-          `${API_URL}${videoId}?api_key=${API_KEY}`
-        );
+        const response = await axios.get(`${API_URL}${videoId}`);
         setComments(response.data.comments);
       } catch (error) {
         console.error('error fetching comments: ', error);
@@ -40,7 +38,7 @@ function CommentsList({ videoId, API_URL, API_KEY }) {
   const handleCommentPost = async (newCommentData) => {
     try {
       const response = await axios.post(
-        `${API_URL}${videoId}/comments?api_key=${API_KEY}`,
+        `${API_URL}${videoId}/comments`,
         newCommentData
       );
 
@@ -106,19 +104,24 @@ function CommentsList({ videoId, API_URL, API_KEY }) {
       </div>
 
       <div className="comments__list">
-        {comments
-          .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
-          .map((comment) => (
-            <CommentsItem
-              key={comment.id}
-              commentId={comment.id}
-              comment={comment}
-              videoId={videoId}
-              API_URL={API_URL}
-              API_KEY={API_KEY}
-              setComments={setComments}
-            />
-          ))}
+        {comments.length === 0 ? (
+          <div className="comments__no-comments">
+            <p className="comments__no-comments-p">There are no comments</p>
+          </div>
+        ) : (
+          comments
+            .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+            .map((comment) => (
+              <CommentsItem
+                key={comment.id}
+                commentId={comment.id}
+                comment={comment}
+                videoId={videoId}
+                API_URL={API_URL}
+                setComments={setComments}
+              />
+            ))
+        )}
       </div>
     </section>
   );
