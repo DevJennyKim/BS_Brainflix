@@ -78,7 +78,15 @@
       flex-grow: 0.1;
     }
   }
+  &__no-comments {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 15rem;
 
+    font-size: 1.5rem;
+  }
   @include mobile {
     &__wrapper {
       align-items: flex-start;
