@@ -10,9 +10,19 @@ function Upload() {
   const [video, setVideo] = useState([]);
   const [newTitle, setNewTitle] = useState('');
   const [newDesc, setNewDesc] = useState('');
-  const [newFile, setNewFile] = useState('');
+  const [newFile, setNewFile] = useState(null);
   const [descError, setDescError] = useState(true);
   const [titleError, setTitleError] = useState(true);
+  const handleVideoImgPost = async () => {
+    try {
+      const formData = new FormData();
+      formData.append('file', newFile);
+      const response = await axios.post(`${API_URL}uploadImg`, formData);
+      return response.data;
+    } catch (error) {
+      console.error('Uploading Image error : ', error);
+    }
+  };
 
   const handleVideoPost = async (newVideo) => {
     try {
@@ -28,6 +38,9 @@ function Upload() {
   const handleChangeDesc = async (event) => {
     setNewDesc(event.target.value);
   };
+  const handleFileChange = (event) => {
+    setNewFile(event.target.files[0]);
+  };
   const isFormValid = () => {
     if (!newTitle || !newDesc) {
       return false;
@@ -36,16 +49,15 @@ function Upload() {
     }
   };
 
-  const handleUpload = (event) => {
+  const handleUpload = async (event) => {
     event.preventDefault();
+    const imgUrl = await handleVideoImgPost();
     if (isFormValid()) {
       handleVideoPost({
         title: newTitle,
         description: newDesc,
-        image: newFile,
+        image: newFile ? imgUrl : 'Upload-video-preview.jpg',
       });
-      console.log('newVideo.Title: ', newTitle);
-      console.log('newVideo.description: ', newDesc);
 
       setTitleError(true);
       setDescError(true);
@@ -64,11 +76,22 @@ function Upload() {
           <div className="upload__container">
             <div className="upload__thumbnail">
               <p className="upload__thumbnail-title">video thumbnail</p>
-              <img
-                src={thumbnail}
-                alt="thumbnail"
-                className="upload__thumbnail-image"
+              <input
+                type="file"
+                id="file"
+                accept="image/*"
+                onChange={handleFileChange}
+                className="upload__thumbnail--hidden"
               />
+              <div className="upload__thumbnail-wrapper">
+                <label htmlFor="file" className="upload__thumbnail-label">
+                  <img
+                    src={newFile ? URL.createObjectURL(newFile) : thumbnail}
+                    alt="Thumbnail"
+                    className="upload__thumbnail-image"
+                  />
+                </label>
+              </div>
             </div>
             <div className="upload__input-wrapper">
               <label className="upload__label">
@@ -80,7 +103,7 @@ function Upload() {
                     !titleError ? 'upload__input-title--error' : ''
                   }`}
                   placeholder="Add a title to your video"
-                  onChange={(e) => setNewTitle(e.target.value)}
+                  onChange={handleChangeTitle}
                 />
               </label>
               <label className="upload__label">
@@ -92,7 +115,7 @@ function Upload() {
                     !descError ? 'upload__input-description--error' : ''
                   }`}
                   placeholder="Add a description to your video"
-                  onChange={(e) => setNewDesc(e.target.value)}
+                  onChange={handleChangeDesc}
                 />
               </label>
             </div>
