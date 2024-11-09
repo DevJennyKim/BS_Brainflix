@@ -32,7 +32,6 @@ function HomePage() {
     };
     getVideo();
   }, [videoId]);
-
   const changeActiveVideo = (id) => {
     setActiveVideoId(id);
   };
@@ -68,7 +67,7 @@ function HomePage() {
         />
         <div className="bottom">
           <div className="bottom__block1">
-            <Description video={selectedVideo} />
+            <Description video={selectedVideo} API_URL={API_URL} />
             <CommentsList videoId={activeVideoId} API_URL={API_URL} />
           </div>
           <div className="bottom__block2">
