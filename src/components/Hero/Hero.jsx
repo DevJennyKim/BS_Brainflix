@@ -5,10 +5,13 @@ function Hero({ videoUrl, posterImage }) {
     <section className="hero">
       <video
         className="hero__video"
-        controls
         poster={posterImage}
-        src={videoUrl}
-      ></video>
+        key={videoUrl}
+        controls
+      >
+        <source src={videoUrl} type="video/mp4" />
+        Sorry, your browser doesn't support the video.
+      </video>
     </section>
   );
 }

@@ -104,18 +104,24 @@ function CommentsList({ videoId, API_URL }) {
       </div>
 
       <div className="comments__list">
-        {comments
-          .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
-          .map((comment) => (
-            <CommentsItem
-              key={comment.id}
-              commentId={comment.id}
-              comment={comment}
-              videoId={videoId}
-              API_URL={API_URL}
-              setComments={setComments}
-            />
-          ))}
+        {comments.length === 0 ? (
+          <div className="comments__no-comments">
+            <p className="comments__no-comments-p">There are no comments</p>
+          </div>
+        ) : (
+          comments
+            .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+            .map((comment) => (
+              <CommentsItem
+                key={comment.id}
+                commentId={comment.id}
+                comment={comment}
+                videoId={videoId}
+                API_URL={API_URL}
+                setComments={setComments}
+              />
+            ))
+        )}
       </div>
     </section>
   );

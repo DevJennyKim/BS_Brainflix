@@ -13,6 +13,15 @@
     flex-direction: column;
     width: 85%;
   }
+  &__loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    width: 100%;
+    height: 100vh;
+  }
   &__title {
     font-size: 3.7rem;
     padding: 3rem 0;
@@ -20,13 +29,18 @@
   &__container {
     display: flex;
     flex-direction: row;
+    width: auto;
+    height: 23.5rem;
     padding: 3rem 0;
     gap: 3rem;
     border-top: 2px solid $mercury;
     border-bottom: 2px solid $mercury;
   }
   &__thumbnail {
+    position: relative;
     width: auto;
+    height: 100%;
+    overflow: hidden;
     &-title {
       text-transform: uppercase;
       width: 100%;
@@ -35,9 +49,48 @@
       letter-spacing: 1px;
       color: $silver;
     }
-    &-image {
+    &-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      &::after {
+        position: absolute;
+        left: 5rem;
+        content: 'Click the image to change the thumbnail';
+        font-weight: 600;
+        font-size: 1.5rem;
+        color: white;
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: opacity 0.5s ease-in-out, transform 0.4s ease-in-out;
+      }
+
+      &:hover::after {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    &-label {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
       width: 40.5rem;
+      height: 100%;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    &-image {
+      width: 100%;
+      height: 100%;
       margin-top: 0.5rem;
+      object-fit: cover;
+    }
+
+    &--hidden {
+      display: none;
     }
   }
   &__input-wrapper {
@@ -75,6 +128,9 @@
       &:focus {
         outline: 2px solid $flix-blue;
       }
+      &--error {
+        outline: 1px solid red;
+      }
     }
     &-description {
       display: flex;
@@ -98,6 +154,9 @@
       }
       &:focus {
         outline: 2px solid $flix-blue;
+      }
+      &--error {
+        outline: 1px solid red;
       }
     }
   }
@@ -128,6 +187,7 @@
       flex-grow: 0.1;
     }
   }
+
   &__btn-publish {
     justify-content: space-between;
     width: 16rem;
@@ -143,7 +203,9 @@
     }
     &__container {
       flex-direction: column;
+      height: auto;
     }
+
     &__input-wrapper {
       gap: 2.5rem;
     }
@@ -154,6 +216,7 @@
     }
     &__container {
       flex-direction: column;
+      height: auto;
       border: none;
       padding: 2rem 0;
     }
