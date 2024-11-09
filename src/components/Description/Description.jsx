@@ -2,22 +2,30 @@ import TimeAgo from 'react-timeago';
 import './Description.scss';
 import viewIcons from '../../assets/icons/views.svg';
 import likeIcons from '../../assets/icons/likes.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function Description({ video, API_URL }) {
-  const [like, setLike] = useState(0);
-
-  console.log(video);
-
+  const [updatedVideo, setUpdatedVideo] = useState(video);
   const handleLike = async () => {
     try {
       await axios.put(`${API_URL}${video.id}/likes`);
-      setLike((prevLike) => prevLike + 1);
+      setUpdatedVideo((prevVideo) => ({
+        ...prevVideo,
+        likes: (
+          parseInt(prevVideo.likes.replace(/,/g, '')) + 1
+        ).toLocaleString(),
+      }));
     } catch (error) {
       console.error('Like Put Error: ', error);
     }
   };
+
+  useEffect(() => {
+    if (video) {
+      setUpdatedVideo(video);
+    }
+  }, [video]);
 
   return (
     <section className="description">
@@ -45,7 +53,7 @@ function Description({ video, API_URL }) {
               className="description__likes-icon"
               onClick={handleLike}
             />
-            <p className="description__likes-count">{video.likes}</p>
+            <p className="description__likes-count">{updatedVideo?.likes}</p>
           </div>
         </div>
       </div>
