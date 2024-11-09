@@ -22,10 +22,6 @@ function Upload() {
       timerProgressBar: true,
       icon: 'warning',
       title: 'Redirecting to homepage',
-      didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer);
-        toast.addEventListener('mouseleave', Swal.resumeTimer);
-      },
       didClose: () => {
         navigate('/');
       },
@@ -77,9 +73,8 @@ function Upload() {
       handleVideoPost({
         title: newTitle,
         description: newDesc,
-        image: newFile ? imgUrl : 'Upload-video-preview.jpg',
+        image: imgUrl,
       });
-
       setTitleError(true);
       setDescError(true);
       Swal.fire({
