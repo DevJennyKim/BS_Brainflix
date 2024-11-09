@@ -50,7 +50,12 @@ function Description({ video, API_URL }) {
             <img
               src={likeIcons}
               alt="Likes Icon"
-              className="description__likes-icon"
+              className={
+                parseInt(updatedVideo.likes.replace(/,/g, '')) > 0 ||
+                parseInt(video.likes.replace(/,/g, '')) > 0
+                  ? `description__likes-icon description__likes--active`
+                  : 'description__likes-icon'
+              }
               onClick={handleLike}
             />
             <p className="description__likes-count">{updatedVideo?.likes}</p>
