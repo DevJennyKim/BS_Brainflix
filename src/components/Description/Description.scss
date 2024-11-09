@@ -55,6 +55,7 @@
       &:hover {
         filter: invert(33%) sepia(62%) saturate(4668%) hue-rotate(322deg)
           brightness(92%) contrast(91%);
+        transform: scale(1.2);
       }
     }
     &--active {
