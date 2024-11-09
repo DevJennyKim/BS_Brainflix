@@ -3,7 +3,7 @@ import thumbnail from '../../assets/images/Upload-video-preview.jpg';
 import publish from '../../assets/icons/publish.svg';
 import './Upload.scss';
 import Swal from 'sweetalert2';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 function Upload() {
   const navigate = useNavigate();
@@ -13,6 +13,17 @@ function Upload() {
   const [newFile, setNewFile] = useState(null);
   const [descError, setDescError] = useState(true);
   const [titleError, setTitleError] = useState(true);
+  const [previewUrl, setPreviewUrl] = useState(thumbnail);
+
+  useEffect(() => {
+    if (newFile) {
+      const objectUrl = URL.createObjectURL(newFile);
+      setPreviewUrl(objectUrl);
+      return () => URL.revokeObjectURL(objectUrl);
+    } else {
+      setPreviewUrl(thumbnail);
+    }
+  }, [newFile]);
 
   const redirecting = () => {
     Swal.fire({
@@ -112,7 +123,7 @@ function Upload() {
               <div className="upload__thumbnail-wrapper">
                 <label htmlFor="file" className="upload__thumbnail-label">
                   <img
-                    src={newFile ? URL.createObjectURL(newFile) : thumbnail}
+                    src={previewUrl}
                     alt="Thumbnail"
                     className="upload__thumbnail-image"
                   />
