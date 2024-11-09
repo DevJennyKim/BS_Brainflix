@@ -37,6 +37,7 @@
     border-bottom: 2px solid $mercury;
   }
   &__thumbnail {
+    position: relative;
     width: auto;
     height: 100%;
     overflow: hidden;
@@ -202,7 +203,9 @@
     }
     &__container {
       flex-direction: column;
+      height: auto;
     }
+
     &__input-wrapper {
       gap: 2.5rem;
     }
@@ -213,6 +216,7 @@
     }
     &__container {
       flex-direction: column;
+      height: auto;
       border: none;
       padding: 2rem 0;
     }
