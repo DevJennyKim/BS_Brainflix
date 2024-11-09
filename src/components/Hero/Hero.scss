@@ -12,55 +12,7 @@
     width: 72%;
     height: 40vw;
     background-color: black;
-    &-controls {
-      position: absolute;
-      display: flex;
-      bottom: 20px;
-      left: 20px;
-      justify-content: space-between;
-      width: calc(100% - 40px);
-      gap: 0.3rem;
-    }
-
-    &-play,
-    &-pause,
-    &-fullscreen,
-    &-progressBar,
-    &-close-fullscreen,
-    &-scrub {
-      background-color: rgba(0, 0, 0, 0.5);
-      color: black;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-      border-radius: 5px;
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.8);
-      }
-    }
-    &-progressBar {
-      flex-grow: 1;
-      margin: 0 10px;
-      appearance: none;
-      &::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        border: none;
-
-        width: 1.5em;
-        height: 2rem;
-
-        background: white;
-        border-radius: 24px;
-      }
-      &::-moz-range-thumb {
-        width: 20px;
-        height: 20px;
-        background: #ff0000;
-        border-radius: 50%;
-        cursor: pointer;
-      }
-    }
+    object-fit: cover;
   }
   @include tablet {
     &__video {
