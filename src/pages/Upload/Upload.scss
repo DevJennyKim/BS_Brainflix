@@ -54,14 +54,18 @@
       display: flex;
       justify-content: flex-start;
       align-items: center;
+      width: 40.5rem;
 
       &::after {
         position: absolute;
         left: 5rem;
         content: 'Click the image to change the thumbnail';
+        padding: 1rem;
+        border-radius: 5px;
         font-weight: 600;
         font-size: 1.5rem;
         color: white;
+        background-color: rgba(0, 0, 0, 0.5);
         opacity: 0;
         transform: translateX(-10px);
         transition: opacity 0.5s ease-in-out, transform 0.4s ease-in-out;
@@ -224,6 +228,19 @@
       padding: 1.7rem 0;
     }
     &__thumbnail {
+      &-wrapper {
+        width: 100%;
+        &::after {
+          left: 1rem;
+          bottom: 1rem;
+          padding: 0.5rem;
+          font-size: 1.5rem;
+        }
+      }
+      &-label {
+        width: 100%;
+      }
+
       &-title {
         font-size: 1.5rem;
       }
